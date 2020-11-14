@@ -4,8 +4,8 @@ const monedaNode = preload("res://Scenes/Moneda.tscn")
 const rect_size_x = 1024
 const rect_size_y = 600
 
-onready var jugador1 = $Jugador1
-onready var jugador2 = $Jugador2
+onready var jugador1 = $jugador1
+onready var jugador2 = $jugador2
 onready var numeros1 = $Numeros1.animationPlayer
 onready var numeros2 = $Numeros2.animationPlayer
 
@@ -27,10 +27,10 @@ func _process(delta):
 	numeros2.play('Contar')
 	numeros2.seek(jugador2.contadorMonedas, true)
 
-	if(jugador1.contadorMonedas == 1):
+	if(jugador1.contadorMonedas == 10):
 		var ganador = 1
 		get_tree().change_scene("res://Scenes/Mundo2.tscn")
-	elif(jugador2.contadorMonedas == 1):
+	elif(jugador2.contadorMonedas == 10):
 		var ganador = 2
 		get_tree().change_scene("res://Scenes/Mundo2.tscn")
 
