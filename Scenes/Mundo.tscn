@@ -50,7 +50,7 @@ position = Vector2( 79.6948, 75.7662 )
 position = Vector2( 965.879, 71.8376 )
 
 [node name="jugador1" parent="." instance=ExtResource( 3 )]
-position = Vector2( 134.695, 237.962 )
+position = Vector2( 112.246, 237.401 )
 
 [node name="jugador2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 910.315, 232.911 )
+position = Vector2( 923.785, 235.717 )

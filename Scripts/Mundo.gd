@@ -28,10 +28,10 @@ func _process(delta):
 	numeros2.seek(jugador2.contadorMonedas, true)
 
 	if(jugador1.contadorMonedas == 10):
-		var ganador = 1
+		get_node("/root/Winner").winner = 1
 		get_tree().change_scene("res://Scenes/Mundo2.tscn")
 	elif(jugador2.contadorMonedas == 10):
-		var ganador = 2
+		get_node("/root/Winner").winner = 2
 		get_tree().change_scene("res://Scenes/Mundo2.tscn")
 
 func _get_random_spawn_position() -> Vector2:

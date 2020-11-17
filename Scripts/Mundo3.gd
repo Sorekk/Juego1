@@ -8,15 +8,10 @@ onready var jugador1 = $jugador1
 onready var jugador2 = $jugador2
 onready var numeros1 = $Numeros1.animationPlayer
 onready var numeros2 = $Numeros2.animationPlayer
-onready var texto = $RichTextLabel
 
 var new_moneda: = monedaNode.instance()
-var ganador = "Ventaja de Jugador{str}"
 
 func _ready():
-	var winner = ganador.format({"str": get_node("/root/Winner").winner})
-	texto.add_text(winner)
-	
 	new_moneda.global_position = _get_random_spawn_position()
 	add_child(new_moneda)
 
@@ -33,17 +28,11 @@ func _process(delta):
 	numeros2.seek(jugador2.contadorMonedas, true)
 
 	if(jugador1.contadorMonedas == 10):
-		if(get_node("/root/Winner").winner == 1):
-			get_node("/root/Winner").winner = 1
-			get_tree().change_scene("res://Scenes/Ganador.tscn")
-		else:
-			get_tree().change_scene("res://Scenes/Mundo3.tscn")
+		get_node("/root/Winner").winner = 1
+		get_tree().change_scene("res://Scenes/Ganador.tscn")
 	elif(jugador2.contadorMonedas == 10):
-		if(get_node("/root/Winner").winner == 2):
-			get_node("/root/Winner").winner = 2
-			get_tree().change_scene("res://Scenes/Ganador.tscn")
-		else:
-			get_tree().change_scene("res://Scenes/Mundo3.tscn")
+		get_node("/root/Winner").winner = 2
+		get_tree().change_scene("res://Scenes/Ganador.tscn")
 
 func _get_random_spawn_position() -> Vector2:
 	var spawn_pos: = Vector2(
