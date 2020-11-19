@@ -12,14 +12,14 @@ onready var numeros2 = $Numeros2.animationPlayer
 var new_moneda: = monedaNode.instance()
 
 func _ready():
-	new_moneda.global_position = _get_random_spawn_position()
+	new_moneda.global_position = get_node("/root/Global")._get_random_spawn_position()
 	add_child(new_moneda)
 
 func _process(delta):
 	var toca = new_moneda.get('toca')
 	if(toca):
 		new_moneda.set('toca', false)
-		new_moneda.global_position = _get_random_spawn_position()
+		new_moneda.global_position = get_node("/root/Global")._get_random_spawn_position()
 		add_child(new_moneda)
 
 	numeros1.play('Contar')
@@ -28,14 +28,8 @@ func _process(delta):
 	numeros2.seek(jugador2.contadorMonedas, true)
 
 	if(jugador1.contadorMonedas == 10):
-		get_node("/root/Winner").winner = 1
+		get_node("/root/Global").winner = 1
 		get_tree().change_scene("res://Scenes/Ganador.tscn")
 	elif(jugador2.contadorMonedas == 10):
-		get_node("/root/Winner").winner = 2
+		get_node("/root/Global").winner = 2
 		get_tree().change_scene("res://Scenes/Ganador.tscn")
-
-func _get_random_spawn_position() -> Vector2:
-	var spawn_pos: = Vector2(
-	rand_range(0, rect_size_x),
-	rand_range(0, rect_size_y))
-	return spawn_pos

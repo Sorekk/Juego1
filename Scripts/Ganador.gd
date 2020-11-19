@@ -7,7 +7,7 @@ const jugador2 = preload("res://Scenes/jugador2.tscn")
 
 func _ready():
 	var new_winner = null
-	if(get_node("/root/Winner").winner == 1):
+	if(get_node("/root/Global").winner == 1):
 		new_winner = jugador1.instance()
 	else:
 		new_winner = jugador2.instance()

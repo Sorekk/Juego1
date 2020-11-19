@@ -21,7 +21,7 @@ config/icon="res://Assets/Tocho.png"
 
 [autoload]
 
-Winner="*res://Scripts/winner.gd"
+Global="*res://Scripts/global.gd"
 
 [input]
 
