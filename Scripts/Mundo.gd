@@ -2,7 +2,6 @@ extends Node2D
 
 const monedaNode = preload("res://Scenes/Moneda.tscn")
 
-
 onready var jugador1 = $jugador1
 onready var jugador2 = $jugador2
 onready var numeros1 = $Numeros1.animationPlayer
@@ -16,9 +15,12 @@ func _ready():
 
 func _process(delta):
 	var toca = new_moneda.get('toca')
+	var tocaBloque = new_moneda.get('tocaBloque')
 	if(toca):
 		new_moneda.global_position = get_node("/root/Global")._get_random_spawn_position()
-		add_child(new_moneda)
+		if(tocaBloque):
+			new_moneda.global_position = get_node("/root/Global")._get_random_spawn_position()
+		new_moneda.set('tocaBloque', false)
 		new_moneda.set('toca', false)
 
 	numeros1.play('Contar')
