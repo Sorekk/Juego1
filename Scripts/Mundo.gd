@@ -14,14 +14,17 @@ func _ready():
 	add_child(new_moneda)
 
 func _process(delta):
+	print('_process')
 	var toca = new_moneda.get('toca')
 	var tocaBloque = new_moneda.get('tocaBloque')
+
 	if(toca):
 		new_moneda.global_position = get_node("/root/Global")._get_random_spawn_position()
-		if(tocaBloque):
-			new_moneda.global_position = get_node("/root/Global")._get_random_spawn_position()
-		new_moneda.set('tocaBloque', false)
-		new_moneda.set('toca', false)
+		new_moneda.visible = false
+		print('no se ve')
+	else:
+		new_moneda.visible = true
+		print('si se ve')
 
 	numeros1.play('Contar')
 	numeros1.seek(jugador1.contadorMonedas, true)
