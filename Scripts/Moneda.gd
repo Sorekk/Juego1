@@ -10,7 +10,9 @@ func _physics_process(delta):
 	toca = false
 	
 	for body in bodies:
-		if body.name == "jugador1":
+		if body.name == "TileMap":
+			toca = true
+		elif body.name == "jugador1":
 			body.contadorMonedas += 1
 			var puntos = "Jugardor 1: {score}"
 			var puntuacion = puntos.format({"score": body.contadorMonedas})
@@ -22,7 +24,3 @@ func _physics_process(delta):
 			var puntuacion = puntos.format({"score": body.contadorMonedas})
 			print(puntuacion)
 			toca = true
-		elif body.name == "TileMap":
-			toca = true
-		else:
-			toca = false

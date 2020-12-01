@@ -7,24 +7,25 @@ onready var jugador2 = $jugador2
 onready var numeros1 = $Numeros1.animationPlayer
 onready var numeros2 = $Numeros2.animationPlayer
 
-var new_moneda: = monedaNode.instance()
+var new_moneda
 
 func _ready():
+	new_moneda = monedaNode.instance()
 	new_moneda.global_position = get_node("/root/Global")._get_random_spawn_position()
 	add_child(new_moneda)
 
 func _process(delta):
-	print('_process')
 	var toca = new_moneda.get('toca')
-	var tocaBloque = new_moneda.get('tocaBloque')
 
+	print('pasa')
 	if(toca):
+		new_moneda.queue_free()
+		new_moneda = monedaNode.instance()
 		new_moneda.global_position = get_node("/root/Global")._get_random_spawn_position()
-		new_moneda.visible = false
-		print('no se ve')
+		print('crear')
 	else:
-		new_moneda.visible = true
-		print('si se ve')
+		print('mostrar')
+		add_child(new_moneda)
 
 	numeros1.play('Contar')
 	numeros1.seek(jugador1.contadorMonedas, true)
